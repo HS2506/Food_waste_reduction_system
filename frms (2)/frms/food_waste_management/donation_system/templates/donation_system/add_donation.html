@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Donation{% endblock %}
+
+{% block content %}
+<h1>Add a Donation</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="foodType">Food Type</label>
+        <select class="form-control" id="foodType" name="food_type">
+            <option value="Cooked">Cooked Food</option>
+            <option value="Uncooked">Uncooked Ingredients</option>
+            <option value="Packaged">Packaged Food</option>
+            <option value="Non-edible">Non-edible Food</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity (kg)</label>
+        <input type="number" class="form-control" id="quantity" name="quantity">
+    </div>
+    <div class="form-group">
+        <label for="pickupTime">Pickup Time</label>
+        <input type="datetime-local" class="form-control" id="pickupTime" name="pickup_time">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="coldStorage" name="requires_cold_storage">
+        <label class="form-check-label" for="coldStorage">Requires Cold Storage</label>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="decomposition" name="needs_decomposition">
+        <label class="form-check-label" for="decomposition">Needs Decomposition</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
